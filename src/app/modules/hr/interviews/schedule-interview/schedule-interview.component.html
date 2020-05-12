@@ -1,0 +1,112 @@
+<main class="schedule-interview-page">
+    <div class="ui-g">
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 header">
+            Schedule An Interview
+        </div>
+    </div>
+    <form [formGroup]="interviewForm" class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12" (ngSubmit)="handleSaveInterview()">
+        <div class="ui-g">
+            <!-- Candidate -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <input placeholder="Candidate"
+                        matInput
+                        formControlName="candidate"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCandidateName" (optionSelected)="onSelectCandidate($event)">
+                    <mat-option *ngFor="let selectedCandidate of filteredCandidates | async" [value]="selectedCandidate" >
+                    {{ selectedCandidate.firstName }}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+
+            <!-- Phone Number -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+            </mat-form-field>
+
+            <!-- Profile -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Profile</mat-label>
+                <input matInput placeholder="Profile" formControlName="profile">
+            </mat-form-field>
+
+            <!-- Interview Rounds -->
+            <div formArrayName="interviewRounds" class="ui-g-12 ui-lg-12 ui-xl-12 ui-md-12 ui-sm-12 interview-rounds">
+                <div class="int-round-header">
+                    <div>
+                        Interview Rounds
+                    </div>
+                    <div>
+                        <fa-icon matTooltip="Add Interview Round" class="clickable-icon" [icon]="faPlusCircle" (click)="addInterviewRound()"></fa-icon>
+                    </div>
+                </div>
+                <div *ngFor="let iRound of interviewRounds.controls; let i = index" [formGroupName]="i">
+                    <!-- Index -->
+                    <div class="ui-g-1 ui-lg-1 ui-xl-1 ui-md-1 ui-sm-2 row-icon">
+                        {{ i+1 }}
+                    </div>
+
+                    <!-- Round Name-->
+                    <mat-form-field class="ui-g-2 ui-lg-2 ui-xl-2 ui-md-2 ui-sm-10">
+                        <mat-label>Round Name</mat-label>
+                        <input matInput placeholder="Round Name" formControlName="round">
+                    </mat-form-field>
+
+                    <!-- Interviewer -->
+                    <mat-form-field class="ui-g-4 ui-lg-4 ui-xl-4 ui-md-4 ui-sm-12">
+                        <input placeholder="Interviewer"
+                                matInput
+                                formControlName="interviewer"
+                                aria-label="Select Interviewer"
+                                [matAutocomplete]="interviewerAutoComplete">
+
+                        <mat-autocomplete #interviewerAutoComplete="matAutocomplete" [displayWith]="displayFn" >
+                            <mat-option *ngFor="let selEmp of filteredEmployees | async" [value]="selectedEmployees">
+                                <div (click)="onSelectEmployee($event, selEmp, i)">
+                                    <mat-checkbox [checked]="selEmp.selected" (change)="toggleSelection(selEmp, i)" (click)="$event.stopPropagation()">
+                                        {{ selEmp.firstName }} {{selEmp.lastName}}
+                                    </mat-checkbox>
+                                </div>
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <!-- Scheduled Date -->
+                    <mat-form-field class="ui-g-2 ui-lg-2 ui-xl-2 ui-md-2 ui-sm-12">
+                        <mat-label>Schedule At</mat-label>
+                        <input matInput [matDatepicker]="roundDatePicker" formControlName="date">
+                        <mat-datepicker-toggle matSuffix [for]="roundDatePicker"></mat-datepicker-toggle>
+                        <mat-datepicker #roundDatePicker></mat-datepicker>
+                    </mat-form-field>
+
+                    <!-- Scheduled Time -->
+                    <mat-form-field class="ui-g-2 ui-lg-2 ui-xl-2 ui-md-2 ui-sm-12">
+                        <mat-select formControlName="time">
+                            <mat-option *ngFor="let time of times" [value]="time">
+                                {{time}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <!-- Remove Icon -->
+                    <div class="ui-g-1 ui-lg-1 ui-xl-1 ui-md-1 ui-sm-12 row-icon">
+                        <fa-icon matTooltip="Remove This Round" class="clickable-icon" [icon]="trashIcon" (click)="removeInterviewRound(i)"></fa-icon>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 actions">
+            <button type="button" class="primary-btn action-btn" (click)="handleCancelClick()">Cancel</button>
+            <button type="submit" class="primary-btn action-btn">Save</button>
+        </div>
+    </form>
+</main>

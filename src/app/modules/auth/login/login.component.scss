@@ -1,0 +1,20 @@
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    height: auto;
+    border: 1px solid lightgrey;
+    padding: 25px 50px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+::ng-deep .login .mat-form-field-prefix {
+    margin-right: 1em !important;
+}

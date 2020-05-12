@@ -1,0 +1,15 @@
+<main class="login">
+    <form [formGroup]="loginForm" class="header" (ngSubmit)="handleLoginClick()">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="Username" formControlName="username">
+            <fa-icon matPrefix [icon]="userIcon"></fa-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <fa-icon matPrefix [icon]="passwordIcon"></fa-icon>
+        </mat-form-field>
+        <button class="primary-btn" matRaisedBtn type="submit">Login</button>
+    </form>
+</main>

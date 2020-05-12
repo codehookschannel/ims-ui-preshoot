@@ -1,0 +1,46 @@
+<div class="side-div employee-page">
+    <div class="side-div-header">
+        <div>
+            Employees
+        </div>
+        <div class="filter-section">
+            <mat-form-field style="width: 70%">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Profile">
+                <fa-icon matSuffix [icon]="searchIcon"></fa-icon>
+            </mat-form-field>
+            <div>
+                <fa-icon matTooltip="Add Employee" class="clickable-icon" [icon]="addIcon" (click)="handleAddEmployee()"></fa-icon>
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- Employee Number -->
+                <ng-container matColumnDef="employeeNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Emp# </th>
+                    <td mat-cell *matCellDef="let emp"> {{emp.employeeNumber}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let emp"> {{emp.firstName}} </td>
+                </ng-container>
+
+
+                <!-- Profile Column -->
+                <ng-container matColumnDef="profile">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Profile </th>
+                    <td mat-cell *matCellDef="let emp"> {{emp.profile}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+
+            <mat-paginator class="paginator-div" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+</div>

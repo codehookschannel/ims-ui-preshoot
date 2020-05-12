@@ -1,0 +1,28 @@
+@import '../../../../colors.scss';
+
+header {
+    display: flex;
+    height: 8vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    background: linear-gradient(45deg, $secondary-clr, $primary-clr)
+}
+
+.logo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+}
+
+.access-controls {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    width: 100vh;
+    font-size: 20px;
+}

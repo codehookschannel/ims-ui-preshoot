@@ -1,0 +1,36 @@
+.header {
+    font-weight: 25px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.interview-rounds {
+    border: 1px solid lightgray;
+    padding: 0px !important;
+}
+
+.int-round-header {
+    background-color: lightgray;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.row-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 50px;
+}

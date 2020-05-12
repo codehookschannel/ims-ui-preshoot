@@ -1,0 +1,89 @@
+<main class="add-employee">
+    <div class="ui-g">
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 header">
+            Add Employee
+        </div>
+    </div>
+    <form [formGroup]="candidateForm" class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12" (ngSubmit)="handleSaveCandidate()">
+        <div class="ui-g">
+            <!-- First Name -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" formControlName="firstName">
+            </mat-form-field>
+
+            <!-- Middle Name-->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Middle Name</mat-label>
+                <input matInput placeholder="Middle Name" formControlName="middleName">
+            </mat-form-field>
+
+            <!-- Last Name -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="lastName">
+            </mat-form-field>
+
+            <!-- Email -->
+            <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <mat-label>Email Id</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+
+            <!-- Phone Number -->
+            <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="Phone Number" formControlName="phoneNumber">
+            </mat-form-field>
+
+            <!-- Birth Date -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Birth Date</mat-label>
+                <input matInput [matDatepicker]="birthDatePicker" placeholder="Birth Date" formControlName="birthDate">
+                <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #birthDatePicker></mat-datepicker>
+            </mat-form-field>
+
+            <!-- Identity Type -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Idenity Type</mat-label>
+                <input matInput placeholder="Identity Type" formControlName="identityType">
+            </mat-form-field>
+
+            <!-- Identity NUmber -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Identity Number</mat-label>
+                <input matInput placeholder="Identity Number" formControlName="identityNumber">
+            </mat-form-field>
+
+            <!-- Experience -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Experience</mat-label>
+                <input matInput placeholder="Experience" formControlName="experience">
+            </mat-form-field>
+
+            <!-- Domain -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <mat-label>Domain</mat-label>
+                <input matInput placeholder="Domain" formControlName="domain">
+            </mat-form-field>
+
+            <!-- Applied For -->
+            <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12">
+                <input placeholder="Applied For"
+                       matInput
+                       formControlName="appliedFor"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option *ngFor="let stack of filteredCompanyStacks | async" [value]="stack">
+                    {{stack}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 actions">
+            <button type="button" class="primary-btn action-btn" (click)="handleCancelClick()">Cancel</button>
+            <button type="submit" class="primary-btn action-btn">Save</button>
+        </div>
+    </form>
+</main>

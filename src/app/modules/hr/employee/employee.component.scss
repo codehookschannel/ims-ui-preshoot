@@ -1,0 +1,23 @@
+@import '../../../../colors.scss';
+
+table {
+  width: 100%;
+  height: 100px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+::ng-deep .employee-page .mat-form-field-label {
+  color: $primary-clr;
+}
+
+
+

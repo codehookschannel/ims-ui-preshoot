@@ -1,0 +1,52 @@
+<div class="side-div candidate-page">
+    <div class="side-div-header">
+        <div>
+            Candidates
+        </div>
+        <div class="filter-section">
+            <mat-form-field style="width: 70%">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. First Name">
+                <fa-icon matSuffix [icon]="searchIcon"></fa-icon>
+            </mat-form-field>
+            <div>
+                <fa-icon matTooltip="Add Candidate" class="clickable-icon" [icon]="addIcon" (click)="handleAddCandidate()"></fa-icon>
+            </div>
+        </div>
+    </div>
+    <div class="table-container">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- Employee First Name -->
+                <ng-container matColumnDef="firstName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> First Name </th>
+                    <td mat-cell *matCellDef="let candidate"> {{candidate.firstName}} </td>
+                </ng-container>
+
+                <!-- Experience Column -->
+                <ng-container matColumnDef="experience">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Experience </th>
+                    <td mat-cell *matCellDef="let candidate"> {{candidate.experience}} years </td>
+                </ng-container>
+
+
+                <!-- Applied For Column -->
+                <ng-container matColumnDef="appliedFor">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Stack </th>
+                    <td mat-cell *matCellDef="let candidate"> {{candidate.appliedFor}} </td>
+                </ng-container>
+
+                <!-- Phone Number -->
+                <ng-container matColumnDef="phoneNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Contact # </th>
+                    <td mat-cell *matCellDef="let candidate"> {{candidate.phoneNumber}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                </tr>
+            </table>
+
+            <mat-paginator class="paginator-div" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+</div>

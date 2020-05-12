@@ -1,0 +1,42 @@
+<main class="add-employee">
+    <div class="ui-g">
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 header">
+            Add Employee
+        </div>
+    </div>
+    <form [formGroup]="employeeForm" class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12" (ngSubmit)="handleSaveEmployee()">
+        <div class="ui-g">
+            <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Username" formControlName="firstName">
+            </mat-form-field>
+            <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Username" formControlName="lastName">
+            </mat-form-field>
+            <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <mat-label>Employee Naumber</mat-label>
+                <input matInput placeholder="Username" formControlName="employeeNumber">
+            </mat-form-field>
+            <!-- <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <mat-label>Profile</mat-label>
+                <input matInput placeholder="Username" formControlName="profile">
+            </mat-form-field> -->
+            <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12">
+                <input placeholder="Profile"
+                       matInput
+                       formControlName="profile"
+                       [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option *ngFor="let empProfile of filteredEmpProfiles | async" [value]="empProfile">
+                    {{empProfile}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        </div>
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 actions">
+            <button type="button" class="primary-btn action-btn" (click)="handleCancelClick()">Cancel</button>
+            <button type="submit" class="primary-btn action-btn">Save</button>
+        </div>
+    </form>
+</main>
