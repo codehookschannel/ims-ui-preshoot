@@ -17,6 +17,7 @@ import { EmployeeService } from 'src/app/modules/shared/services/employee.servic
 import { startWith, map } from 'rxjs/operators';
 import { faTrash, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { Moment } from 'moment';
+import { TimzoneService } from 'src/app/modules/shared/services/timzone.service';
 
 @Component({
   selector: 'app-schedule-interview',
@@ -58,7 +59,8 @@ export class ScheduleInterviewComponent implements OnInit {
     private interviewService: InterviewService,
     private candidateService: CandidateService,
     private empService: EmployeeService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private timezoneService: TimzoneService
   ) {}
 
   ngOnInit(): void {
@@ -171,7 +173,8 @@ export class ScheduleInterviewComponent implements OnInit {
       const times = int.time.split(':');
       date.minutes(+times[1]);
       date.hours(+times[0]);
-      int.scheduledTime = date.toISOString();
+      int.scheduledTime = this.timezoneService.tenantToUtc(date).toISOString();
+      // int.scheduledTime = date.utc().toString();
 
       // Interviewer
       int.interviewers = int.interviewer.map(emp => emp.id);

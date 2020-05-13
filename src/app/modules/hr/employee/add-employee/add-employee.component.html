@@ -34,6 +34,14 @@
                 </mat-autocomplete>
               </mat-form-field>
         </div>
+
+        <div formGroupName="userProfile" class="ui-g">
+            <mat-form-field class="ui-g-12 ui-lg-12 ui-xl-12 ui-md-12 ui-sm-12">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+        </div>
+        
         <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 actions">
             <button type="button" class="primary-btn action-btn" (click)="handleCancelClick()">Cancel</button>
             <button type="submit" class="primary-btn action-btn">Save</button>

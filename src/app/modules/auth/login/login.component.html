@@ -1,5 +1,8 @@
 <main class="login">
-    <form [formGroup]="loginForm" class="header" (ngSubmit)="handleLoginClick()">
+    <div *ngIf="errorFlag" class="error-box">
+        <p class="error-msg">{{errorMessage}}</p>
+    </div>
+    <form [formGroup]="loginForm" class="login-div" (ngSubmit)="handleLoginClick()">
         <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput placeholder="Username" formControlName="username">

@@ -18,7 +18,12 @@ export class AddEmployeeComponent implements OnInit {
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     employeeNumber: new FormControl(''),
-    profile: new FormControl('')
+    profile: new FormControl(''),
+    userProfile: new FormGroup({
+      email: new FormControl(''),
+      password: new FormControl(''), // TODO: Mail will be sent to email from there employee will set his password
+      username: new FormControl(''), // TODO: Same as mail
+    })
   });
 
   filteredEmpProfiles: Observable<string[]>;
@@ -43,6 +48,7 @@ export class AddEmployeeComponent implements OnInit {
 
   handleSaveEmployee() {
     const employee = this.employeeForm.value as Employee;
+    console.log(employee);
     this.employeeService.saveEmployee(employee).subscribe(response => {
       if ( response.success) {
         this.toastr.success('Employee Added Successfully.', 'Success!!!');

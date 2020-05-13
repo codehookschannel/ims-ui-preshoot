@@ -9,6 +9,8 @@ import { InterviewService } from '../../shared/services/interview.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ScheduleInterviewComponent } from './schedule-interview/schedule-interview.component';
 import { Moment } from 'moment';
+import * as moment from 'moment';
+import { TimzoneService } from '../../shared/services/timzone.service';
 
 @Component({
   selector: 'app-interviews',
@@ -35,7 +37,8 @@ export class InterviewsComponent implements OnInit {
 
   constructor(
     private interviewService: InterviewService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private timezoneService: TimzoneService
   ) {}
 
   ngOnInit(): void {
@@ -71,29 +74,39 @@ export class InterviewsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
-      response.data.forEach(interview => {
-        const date = new Date(interview.interviewRounds[0].scheduledTime.split('T')[0]);
+      const is = response.data as Interview[];
+      is.forEach(int => {
+        int.interviewRounds.forEach(ir => {
+          console.log('RAW ', ir.scheduledTime);
+          const mom = moment.utc(ir.scheduledTime).toDate();
+          console.log('UTC ', mom);
+          // console.log('CONVERTED: ', this.timezoneService.utcToTenant(mom));
+        })
+      })
 
-        this.scheduledData = response.data.reduce((acc, value) => {
-          const d = acc.find(s => s.date === date);
-          if (d) {
-            ++d.value;
-          } else {
-            acc.push({
-              date: date,
-              value: 1
-            });
-          }
-          return acc;
-        }, []);
+      // response.data.forEach(interview => {
+      //   const date = new Date(interview.interviewRounds[0].scheduledTime.split('T')[0]);
+
+      //   this.scheduledData = response.data.reduce((acc, value) => {
+      //     const d = acc.find(s => s.date === date);
+      //     if (d) {
+      //       ++d.value;
+      //     } else {
+      //       acc.push({
+      //         date: date,
+      //         value: 1
+      //       });
+      //     }
+      //     return acc;
+      //   }, []);
 
         // this.scheduledData.push({
         //   date: new Date(interview.interviewRounds[0].scheduledTime.split('T')[0]),
         //   value: Math.random() * 1000
         // });
-      });
+      // });
 
-      this.interviewService.$scheduledInterviews.next(this.scheduledData);
+      // this.interviewService.$scheduledInterviews.next(this.scheduledData);
     });
   }
 

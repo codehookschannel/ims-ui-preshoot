@@ -22,7 +22,7 @@ import { SharedModule } from './modules/shared/shared.module';
     SharedModule
   ],
   providers: [
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}
+    // {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}}
   ],
   bootstrap: [AppComponent]
 })

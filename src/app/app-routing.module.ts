@@ -14,6 +14,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/hr/hr.module').then(m => m.HrModule)
   },
   {
+    path: 'employee',
+    loadChildren: () => import('./modules/employee/employee.module').then(m => m.EmployeeModule)
+  },
+  {
     path: 'charts',
     component: LineComponent
   }

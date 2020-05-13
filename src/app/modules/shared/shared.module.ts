@@ -15,6 +15,11 @@ import { InterviewService } from './services/interview.service';
 import { DashboardItemCardComponent } from './dashboard-item-card/dashboard-item-card.component';
 import { LineComponent } from './charts/line/line.component';
 import { DashboardService } from './services/dashboard.service';
+import { AuthService } from './services/auth.service';
+import { GeneralService } from './services/general.service';
+
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { TimzoneService } from './services/timzone.service';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, DashboardItemCardComponent, LineComponent],
@@ -25,7 +30,8 @@ import { DashboardService } from './services/dashboard.service';
     AppMaterialModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule
   ],
   exports: [
     AppMaterialModule,
@@ -35,8 +41,17 @@ import { DashboardService } from './services/dashboard.service';
     FooterComponent,
     HttpClientModule,
     DashboardItemCardComponent,
-    LineComponent
+    LineComponent,
+    FullCalendarModule
   ],
-  providers: [EmployeeService, CandidateService, InterviewService, DashboardService]
+  providers: [
+    EmployeeService,
+    CandidateService,
+    InterviewService,
+    DashboardService,
+    AuthService,
+    GeneralService,
+    TimzoneService
+  ]
 })
 export class SharedModule { }

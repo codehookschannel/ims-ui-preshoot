@@ -25,6 +25,15 @@ export interface Candidate {
     links?: Link[];
 }
 
+export interface UserProfile {
+    id: string;
+    email: string;
+    username: string;
+    password: string;
+    employee?: Employee;
+    links?: any[];
+}
+
 export interface Employee {
     id?: string;
     firstName?: string;
@@ -33,6 +42,7 @@ export interface Employee {
     profile?: string;
     links?: Link[];
     selected?: boolean;
+    userProfile?: UserProfile;
 }
 
 export interface InterviewRound {

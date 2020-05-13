@@ -3,31 +3,13 @@
     <div class="ui-g-8 ui-lg-8 ui-xl-8 ui-sm-12 main-div">
         <div class="ui-g" >
             <div class="ui-g-12 cards-div">
-                <div class="count-card scheduled-card">
+                <div [ngClass]="getCardStyle(card)" *ngFor="let card of cardData">
                     <div>
-                        Scheduled
+                        {{card.status}}
                     </div>
                     <div class="count">
                         <!-- <app-line [data]="chartData?.SCHEDULED"></app-line> -->
-                        {{chartData?.SCHEDULED?.length ? chartData?.SCHEDULED.length : 0}}
-                    </div>
-                </div>
-                <div class="count-card selected-card">
-                    <div>
-                        Under Process
-                    </div>
-                    <div class="count">
-                        <!-- <app-line [data]="chartData?.UNDER_PROCESS"></app-line> -->
-                        {{chartData?.UNDER_PROCESS?.length ? chartData?.UNDER_PROCESS.length : 0}}
-                    </div>
-                </div>
-                <div class="count-card rejected-card">
-                    <div>
-                        Rejected
-                    </div>
-                    <div class="count">
-                        <!-- <app-line [data]="chartData?.REJECTED"></app-line> -->
-                        {{chartData?.REJECTED?.length ? chartData?.REJECTED.length : 0}}
+                        {{card.count}}
                     </div>
                 </div>
             </div>

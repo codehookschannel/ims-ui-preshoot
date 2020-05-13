@@ -1,0 +1,13 @@
+<app-header></app-header>
+<main class="emp-dashboard">
+    <button (click)="clickTime()">Time</button>
+    <button (click)="clickDay()">Day</button>
+    <button (click)="clickWeek()">Weekly</button>
+    <full-calendar #calendar 
+        (dateClick)="handleDateClick($event)"
+        [header]="header"
+        [defaultView]="viewType"
+        [plugins]="calendarPlugins"
+    ></full-calendar>
+</main>
+<app-footer></app-footer>

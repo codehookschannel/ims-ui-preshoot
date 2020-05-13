@@ -1,3 +1,5 @@
+@import '../../../../colors.scss';
+
 main {
     width: 100vw;
     height: 100vh;
@@ -6,13 +8,38 @@ main {
     justify-content: center;
 }
 
-.header {
+.login-div {
+    width: 30%;
     height: auto;
     border: 1px solid lightgrey;
     padding: 25px 50px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-box {
+    width: 40%;
+    margin: 20px;
+    color: $error-clr;
+    border: 1px solid $error-clr;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.error-msg {
+    -webkit-user-modify: read-write-plaintext-only;
+    line-height: 40px;
+    outline: none;
 }
 
 ::ng-deep .login .mat-form-field-prefix {
