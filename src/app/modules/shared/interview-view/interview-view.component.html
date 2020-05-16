@@ -1,0 +1,61 @@
+<!-- <header></header> -->
+<main class="interview-view-page ui-g">
+    <div class="ui-g-12 candidate-header">
+        <div class="candidate-name">
+            {{ interview?.candidate.firstName }} {{interview?.candidate.lastName}}
+            <span>{{interview?.candidate.appliedFor}}</span>
+        </div>
+        <div class="candidate-actions">
+            <fa-icon class="clickable-icon" matTooltip="Open Video Call Link" [icon]="videoIcon" size="1.5x"></fa-icon>
+            <fa-icon class="clickable-icon" matTooltip="Reschedule" [icon]="reTweetIcon" size="1.5x"></fa-icon>
+            <fa-icon class="clickable-icon" (click)="handleAddFeedbackComponent()" matTooltip="Give Feedback" [icon]="commentIcon" size="1.5x"></fa-icon>
+            <fa-icon class="clickable-icon" matTooltip="View Resume" [icon]="fileIcon" size="1.5x"></fa-icon>
+        </div>
+    </div>
+
+    <div class="ui-g-6 ui-lg-6 ui-xl-6 ui-sm-12 candidate-details">
+        <span class="label">Email</span>
+        <span class="value">{{interview?.candidate.email}}</span>
+    </div>
+    <div class="ui-g-3 ui-lg-3 ui-xl-3 ui-sm-12 candidate-details">
+        <span class="label">Phone Number</span>
+        <span class="value">{{interview?.candidate.phoenNumber}}</span>
+    </div>
+    <div class="ui-g-3 ui-lg-3 ui-xl-3 ui-sm-12 candidate-details">
+        <span class="label">Experience</span>
+        <span class="value">{{interview?.candidate.experience}}</span>
+    </div>
+
+    <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 interview-round" *ngFor="let round of interview?.interviewRounds">
+        <div class="ui-g-3 round-header">
+            {{round.round}}
+            <star-rating disabled="true" [starType]="'svg'" [rating]="2.63"></star-rating>
+        </div>
+        <div class="ui-g-9 round-details">
+            <div class="ui-g">
+                <!-- Labels -->
+                <div class="ui-g-7 ui-lg-7 ui-xl-7 ui-sm-12 interviwer-section">
+                    <span class="label">Interviewed By</span>
+                </div>
+                <div class="ui-g-4 ui-lg-4 ui-xl-4 ui-sm-12 interviwer-section">
+                    <span class="label">Interviewed On</span>
+                </div>
+                <div class="ui-g-1 ui-lg-1 ui-xl-1 ui-sm-12"></div>
+
+                <!-- Values-->
+                <div class="ui-g-7 ui-lg-7 ui-xl-7 ui-sm-12 interviwer-section">
+                    <span class="value" *ngFor="let interviewer of round.interviewerDetails">
+                        {{interviewer.firstName}} {{interviewer.lastName}}
+                        <span class="email">({{interviewer.userProfile.email}})</span>
+                    </span>
+                </div>
+                <div class="ui-g-4 ui-lg-4 ui-xl-4 ui-sm-12 interviwer-section">
+                    <span class="value">{{round.scheduledTime | date: 'dd-MMM, HH:mm'}}</span>
+                </div>
+                <div class="ui-g-1 ui-lg-1 ui-xl-1 ui-sm-12 interviwer-section">
+                    <fa-icon class="clickable-icon" (click)="handleFeedbackViewClick(round)" matTooltip="View Feedback" [icon]="viewFeedbackIcon" size="2x"></fa-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

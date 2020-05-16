@@ -1,0 +1,82 @@
+.candidate-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.candidate-name {
+  font-size: 27px;
+  margin-right: 20px;
+  span {
+    font-size: 15px;
+    color: gray;
+  }
+}
+
+.candidate-actions {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.candidate-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+}
+
+.label {
+  color: lightslategrey;
+  font-size: 18px;
+}
+
+.value {
+  padding-top: 6px;
+  font-size: 20px;
+}
+
+.email {
+  font-size: 13px;
+  text-decoration: underline;
+  color: #54549c;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.email:hover {
+  color: blue;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.interview-round {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.round-header {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid lightgray;
+  // background: lightgray;
+  border-radius: 10px 0 0 10px;
+  flex-direction: column;
+}
+
+.interviwer-section {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  padding-bottom: 0;
+}
+
+::ng-deep .rating {
+  outline: none !important;
+}

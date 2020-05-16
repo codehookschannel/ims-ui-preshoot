@@ -1,0 +1,79 @@
+@import '../../../../colors.scss';
+
+::ng-deep .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 0;
+    background: linear-gradient(45deg, $third-clr, $fourth-clr);
+    padding: 12px 10px;
+    border: 1px solid $third-clr;
+    border-radius: 10px 10px 0 0;
+}
+
+::ng-deep .fc-view-container {
+    position: relative;
+    border: 1px solid $third-clr;
+    padding: 15px;
+    height: 76.5vh;
+    overflow: auto;
+    border-radius: 0 0 10px 10px;
+}
+
+::ng-deep .fc-button {
+    padding: .25em 1em;
+    font-size: 0.75em;
+}
+
+::ng-deep .fc-toolbar h2 {
+    font-size: 1.0em;
+    margin: 0;
+}
+
+::ng-deep .fc-content {
+    cursor: pointer;
+}
+
+::ng-deep .fc-content:hover {
+
+}
+
+::ng-deep .fc-list-item-title {
+    cursor: pointer;
+}
+
+::ng-deep .fc .fc-row .fc-content-skeleton table, 
+::ng-deep .fc .fc-row .fc-content-skeleton td, 
+::ng-deep .fc .fc-row .fc-mirror-skeleton td {
+    background: none;
+    border-color: transparent;
+    padding: 7px;
+    font-size: 15px;
+}
+
+::ng-deep .fc-view-container *, 
+::ng-deep .fc-view-container *:before, 
+::ng-deep .fc-view-container *:after {
+    box-sizing: content-box;
+    padding: 3px;
+}
+
+// ::ng-deep .fc-unthemed td.fc-today {
+//     background: #368bd4;
+//     color: white;
+// }
+
+.detail-header {
+    padding: 10px;
+    height: 32px;
+}
+
+.detail-content {
+    border-radius: 0 0 10px 10px;
+    border: 1px solid $third-clr;
+    height: 77vh;
+    overflow: auto;
+    padding: 15px;
+}
+
+.test {
+    background-color: red;
+    color: yellow;
+}

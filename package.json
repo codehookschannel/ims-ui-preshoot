@@ -31,6 +31,8 @@
     "@fullcalendar/interaction": "^4.4.0",
     "@fullcalendar/list": "^4.4.0",
     "@fullcalendar/timegrid": "^4.4.0",
+    "angular-star-rating": "^4.0.0-beta.3",
+    "css-star-rating": "^1.2.4",
     "d3": "^5.16.0",
     "moment": "^2.25.3",
     "moment-timezone": "^0.5.28",

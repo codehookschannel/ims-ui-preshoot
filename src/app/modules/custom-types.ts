@@ -53,6 +53,14 @@ export interface InterviewRound {
     scheduledTime?: string;
     date?: any;
     time: string;
+    interviewerDetails?: Employee[];
+    feedback?: FeedbackDto[];
+}
+
+export interface FeedbackDto {
+    skill: string;
+    feedback: string;
+    rating: string;
 }
 
 export interface InterviewStatDto {
@@ -121,4 +129,10 @@ export const TIME_LINE = [
     '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00',
     '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30'
 ]
+
+// $success-clr: #7FB069;
+// $error-clr: #D36135;
+// $warning-clr: #E6AA68;
+// $info-clr: #ECE4B7;
+
 

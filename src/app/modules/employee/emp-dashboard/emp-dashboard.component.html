@@ -1,13 +1,22 @@
 <app-header></app-header>
-<main class="emp-dashboard">
-    <button (click)="clickTime()">Time</button>
-    <button (click)="clickDay()">Day</button>
-    <button (click)="clickWeek()">Weekly</button>
-    <full-calendar #calendar 
-        (dateClick)="handleDateClick($event)"
-        [header]="header"
-        [defaultView]="viewType"
-        [plugins]="calendarPlugins"
-    ></full-calendar>
+<main class="ui-g emp-dashboard">
+    <div class="ui-g-6 ui-lg-6 ui-xl-6 ui-sm-12">
+        <div class="detail-header">
+            {{selectedInterview?.candidate.firstName}}
+        </div>
+        <div class="detail-content">
+            <app-interview-view [interview]="selectedInterview"></app-interview-view>
+        </div>
+    </div>
+    <div class="ui-g-6 ui-lg-6 ui-xl-6 ui-sm-12">
+        <full-calendar #calendar 
+            [header]="header"
+            [defaultView]="viewType"
+            [plugins]="calendarPlugins"
+            [events]="events"
+            [nowIndicator]="true"
+            (eventClick)="handleEventClick($event)"
+        ></full-calendar>
+    </div>
 </main>
 <app-footer></app-footer>

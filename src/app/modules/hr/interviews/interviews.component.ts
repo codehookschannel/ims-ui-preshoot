@@ -8,7 +8,6 @@ import { Interview, InterviewStatus } from '../../custom-types';
 import { InterviewService } from '../../shared/services/interview.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ScheduleInterviewComponent } from './schedule-interview/schedule-interview.component';
-import { Moment } from 'moment';
 import * as moment from 'moment';
 import { TimzoneService } from '../../shared/services/timzone.service';
 
@@ -77,9 +76,7 @@ export class InterviewsComponent implements OnInit {
       const is = response.data as Interview[];
       is.forEach(int => {
         int.interviewRounds.forEach(ir => {
-          console.log('RAW ', ir.scheduledTime);
-          const mom = moment.utc(ir.scheduledTime).toDate();
-          console.log('UTC ', mom);
+          
           // console.log('CONVERTED: ', this.timezoneService.utcToTenant(mom));
         })
       })

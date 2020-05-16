@@ -1,0 +1,16 @@
+
+<button (click)="handleAddClick()"> Add</button>
+<main class="add-feedback-page">
+    <form [formGroup]="feedbackForm" (ngSubmit)="handleFormSubmit()">
+        <div formArrayName="feedback">
+            <ng-container *ngFor="let f of feedbacks.controls; let i = index">
+                <div [formGroup]="f">
+                    <input type="text" formControlName="skill">
+                    <input type="text" formControlName="feedback">
+                    <input type="text" formControlName="rating">
+                </div>
+            </ng-container>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</main>

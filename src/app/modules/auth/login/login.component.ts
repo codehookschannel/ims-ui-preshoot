@@ -42,6 +42,8 @@ export class LoginComponent implements OnInit {
       if (response.success) {
         this.generalService.getHateosData(response.data.links[0].href).subscribe(empResponse => {
           const emp = empResponse.data;
+          // TODO: Store Employee details somewhere which is globally accessible
+          localStorage.setItem('loggedInUser', JSON.stringify(emp));
           switch (emp.profile) {
             case EmployeeProfiles.HR: this.router.navigate(['/hr']); break;
             default: this.router.navigate(['/employee']);

@@ -20,4 +20,8 @@ export class EmployeeService {
   saveEmployee(employee: Employee) {
     return this.http.post<ResponseDto<Employee>>(this.empUrl, employee);
   }
+
+  loadEmployeeById(empId: string) {
+    return this.http.get<ResponseDto<Employee>>(`${this.empUrl}/${empId}`);
+  }
 }

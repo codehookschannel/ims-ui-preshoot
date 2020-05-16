@@ -20,9 +20,13 @@ import { GeneralService } from './services/general.service';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TimzoneService } from './services/timzone.service';
+import { InterviewViewComponent } from './interview-view/interview-view.component';
+import { StarRatingModule } from 'angular-star-rating';
+import { ViewFeedbackComponent } from './view-feedback/view-feedback.component';
+import { AddFeedbackComponent } from './add-feedback/add-feedback.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, DashboardItemCardComponent, LineComponent],
+  declarations: [HeaderComponent, FooterComponent, DashboardItemCardComponent, LineComponent, InterviewViewComponent, ViewFeedbackComponent, AddFeedbackComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -31,7 +35,8 @@ import { TimzoneService } from './services/timzone.service';
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FullCalendarModule
+    FullCalendarModule,
+    StarRatingModule.forRoot()
   ],
   exports: [
     AppMaterialModule,
@@ -42,7 +47,9 @@ import { TimzoneService } from './services/timzone.service';
     HttpClientModule,
     DashboardItemCardComponent,
     LineComponent,
-    FullCalendarModule
+    FullCalendarModule,
+    InterviewViewComponent,
+    StarRatingModule
   ],
   providers: [
     EmployeeService,
