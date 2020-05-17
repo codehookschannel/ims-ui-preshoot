@@ -112,6 +112,40 @@ export const empProfiles = [
     EmployeeProfiles.TEAM_LEAD
 ];
 
+export enum Skills {
+    BASIC_JAVA = 'BASIC_JAVA',
+    ADVANCED_JAVA = 'ADVANCED_JAVA',
+    SPRING_FRAMEWORK = 'SPRING_FRAMEWORK',
+    SPRING_BOOT = 'SPRING_BOOT',
+    SPRNIG_CLOUD = 'SPRING_CLOUD',
+    DOCKER = 'DOCKER',
+    PCF = 'PCF',
+    AWS = 'AWS',
+    HTML_CSS = 'HTML_CSS',
+    JAVASCRIPT = 'JAVASCRIPT',
+    ANGULAR = 'ANGULAR',
+    RXJS = 'RXJS',
+    REDUX = 'REDUX',
+    HANDS_ON = 'HANDS_ON'
+}
+
+export const skillvalues = [
+    Skills.BASIC_JAVA,
+    Skills.ADVANCED_JAVA,
+    Skills.SPRING_FRAMEWORK,
+    Skills.SPRING_BOOT,
+    Skills.SPRNIG_CLOUD,
+    Skills.DOCKER,
+    Skills.PCF,
+    Skills.AWS,
+    Skills.HTML_CSS,
+    Skills.JAVASCRIPT,
+    Skills.ANGULAR,
+    Skills.RXJS,
+    Skills.REDUX,
+    Skills.HANDS_ON
+]
+
 export const companyStacks = [
     'JAVA',
     'SPRING',

@@ -29,7 +29,14 @@
     <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 interview-round" *ngFor="let round of interview?.interviewRounds">
         <div class="ui-g-3 round-header">
             {{round.round}}
-            <star-rating disabled="true" [starType]="'svg'" [rating]="2.63"></star-rating>
+            <star-rating 
+                [showHalfStars]="true"
+                [readOnly]="true"
+                [starType]="'svg'"
+                [rating]="4.5"
+                labelPosition="bottom"
+                labelText="Good"
+            ></star-rating>
         </div>
         <div class="ui-g-9 round-details">
             <div class="ui-g">

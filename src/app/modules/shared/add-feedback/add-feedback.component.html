@@ -1,16 +1,50 @@
+<main class="ui-g add-feedback-page">
 
-<button (click)="handleAddClick()"> Add</button>
-<main class="add-feedback-page">
-    <form [formGroup]="feedbackForm" (ngSubmit)="handleFormSubmit()">
-        <div formArrayName="feedback">
+    <div class="ui-g-12 header-div">
+        <div>
+            Feedback
+        </div>
+        <button class="primary-btn" (click)="handleAddClick()">
+            <fa-icon></fa-icon>
+            Add Another Skill
+        </button>
+    </div>
+
+    <form class="ui-g-12" [formGroup]="feedbackForm" (ngSubmit)="handleFormSubmit()" class="feedback-form">
+        <div formArrayName="feedback" class="ui-g feedback-div">
             <ng-container *ngFor="let f of feedbacks.controls; let i = index">
-                <div [formGroup]="f">
-                    <input type="text" formControlName="skill">
-                    <input type="text" formControlName="feedback">
-                    <input type="text" formControlName="rating">
+                <div [formGroup]="f" class="formGroup">
+                    <!-- Skill -->
+                    <mat-form-field class="ui-g-3 ui-lg-3 ui-xl-3 ui-md-3 ui-sm-12" >
+                        <mat-label>Skill</mat-label>
+                        <input type="text" (click)="onChangeText(i)" matInput formControlName="skill" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredSkills | async" [value]="option">
+                            {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <!-- Comments / feedback -->
+                    <mat-form-field class="ui-g-6 ui-lg-6 ui-xl-6 ui-md-6 ui-sm-12" style="width: 250%">
+                        <textarea rows="1" matInput type="text" formControlName="feedback" placeholder="Comments"></textarea>
+                    </mat-form-field>
+                    
+                    <!-- Rating -->
+                    <div class="ui-g-2 ui-lg-2 ui-xl-2 ui-md-2 ui-sm-12 rating-div">
+                        <star-rating-control formControlName="rating"></star-rating-control>
+                    </div>
+
+                    <!-- Remove Icon -->
+                    <div class="ui-g-1 ui-lg-1 ui-xl-1 ui-md-1 ui-sm-12 rating-div">
+                        <fa-icon [icon]="faTrash" (click)="removeSkill(i)"></fa-icon>
+                    </div>
                 </div>
             </ng-container>
         </div>
-        <button type="submit">Submit</button>
+        <div class="ui-g-12 ui-lg-12 ui-xl-12 ui-sm-12 actions">
+            <button type="button" class="primary-btn action-btn" (click)="handleCancelClick()">Cancel</button>
+            <button type="submit" class="primary-btn action-btn">Save</button>
+        </div>
     </form>
 </main>
